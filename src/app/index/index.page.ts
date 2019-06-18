@@ -23,6 +23,10 @@ export class IndexPage implements OnInit {
   }
 
 
+  att(nomeCategoria : string){
+    this.router.navigate(['/categoria', {'categoria' : nomeCategoria}]);
+  }
+
   slideOpts = {
     initialSlide: 0,
     speed: 20,
@@ -31,10 +35,17 @@ export class IndexPage implements OnInit {
     slidesPerView: 1,
   };
 
+  slideOpts1 = {
+    initialSlide: 0,
+    speed: 20,
+    autoplay: true,
+    loop: true,
+    slidesPerView: 3,
+  }
+
   carrinho(){
     this.router.navigate(['carrinho']);
   }
-
 
   getList() {
     var ref = firebase.firestore().collection("produto");

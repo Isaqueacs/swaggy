@@ -48,23 +48,33 @@
 
   <ion-grid>
     <ion-row>
-          <ion-tab-button tab="schedule">
+        <ion-slides pager="true" [options]="slideOpts1">
+            <ion-slide>
+          <ion-tab-button tab="schedule" (click)="att('Jaqueta')">
             <img src="../../assets/img/tshirt.png" width="100px" height="100px" />
             <!--<ion-icon name="calendar"></ion-icon>-->
             <ion-label>Camisa</ion-label>
           </ion-tab-button>
-          <ion-tab-button tab="speakers">
+          </ion-slide>
+          <ion-slide>
+          <ion-tab-button tab="speakers"  (click)="att('Tenis')">
             <img src="../../assets/img/shoe.png" width="100px" height="100px" />
             <ion-label>Tênis</ion-label>
             </ion-tab-button>
-          <ion-tab-button tab="speakers">
+          </ion-slide>
+          <ion-slide>
+          <ion-tab-button tab="speakers"  (click)="att('Acessórios')">
             <img src="../../assets/img/cap.png" width="100px" height="100px" />
             <ion-label>Bonés</ion-label>
           </ion-tab-button>
+        </ion-slide>
+        <ion-slide>
           <ion-tab-button tab="speakers">
             <img src="../../assets/img/1826099.png" width="100px" height="100px" />
             <ion-label>Bonés</ion-label>
           </ion-tab-button>
+        </ion-slide>
+          </ion-slides>
     </ion-row>
   </ion-grid>
 
@@ -93,10 +103,6 @@
       <ion-card-title>{{produto?.nomeProduto}}</ion-card-title>
       <ion-card-subtitle>R$ {{produto?.preco}}</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content>
-      <p>{{produto?.descricao}}</p>
-      <p>{{produto?.categoria}}</p>
-    </ion-card-content>
     <ion-button fill="outline" slot="end">Adicionar</ion-button>
   </ion-card>
 

@@ -20,6 +20,13 @@
     </ion-slide>
   </ion-slides>
 
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="carrinho()">
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge color="primary">{{pedido.itens.length}}</ion-badge>
+    </ion-fab-button>
+  </ion-fab>
+
   <!-- <ion-list>
       <ion-item>
         <ion-label>Pokémon Yellow</ion-label>
@@ -70,8 +77,8 @@
         </ion-slide>
         <ion-slide>
           <ion-tab-button tab="speakers">
-            <img src="../../assets/img/1826099.png" width="100px" height="100px" />
-            <ion-label>Bonés</ion-label>
+            <img src="../../assets/img/sweatshirt.png" width="100px" height="100px" />
+            <ion-label>Casacos</ion-label>
           </ion-tab-button>
         </ion-slide>
           </ion-slides>
@@ -103,7 +110,7 @@
       <ion-card-title>{{produto?.nomeProduto}}</ion-card-title>
       <ion-card-subtitle>R$ {{produto?.preco}}</ion-card-subtitle>
     </ion-card-header>
-    <ion-button fill="outline" slot="end">Adicionar</ion-button>
+    <ion-button fill="outline" slot="end" (click)="addCarrinho(produto)">Adicionar</ion-button>
   </ion-card>
 
   <!-- fab placed in the center of the content with a list on each side -->

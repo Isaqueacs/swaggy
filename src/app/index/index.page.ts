@@ -3,6 +3,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonContent, LoadingController } from '@ionic/angular';
 import { Produto } from '../model/produto';
 import * as firebase from 'firebase';
+import { StorageService } from '../service/storage.service';
+import { Pedido } from '../model/pedido';
+import { FormGroup } from '@angular/forms';
+import { Item } from '../model/item';
 
 @Component({
   selector: 'app-index',
@@ -15,7 +19,11 @@ export class IndexPage implements OnInit {
   id: string;
 
 
+  pedido : Pedido = new Pedido();
+  formGroup : FormGroup;
+
   constructor(public loadingController: LoadingController,
+              public storageServ : StorageService,
               public router : Router) { }
 
   ngOnInit() {
@@ -45,6 +53,30 @@ export class IndexPage implements OnInit {
 
   carrinho(){
     this.router.navigate(['carrinho']);
+  }
+
+  addCarrinho(produto : Produto){
+    this.pedido = this.storageServ.getCart();
+    let add = true;
+
+    let i = new Item();
+    i.produto = produto;
+    i.quantidade = 1;
+
+    if(this.pedido==null){ // Caso pedido esteja vazio
+      this.pedido = new Pedido(); //cria umm novo pedido  
+      this.pedido.itens = []; //cria uma lista de itens
+    }
+
+    this.pedido.itens.forEach(p => {
+      if(p.produto.id == produto.id){
+        add = false;
+      }
+    });
+
+    if(add==true) this.pedido.itens.push(i);
+
+    this.storageServ.setCart(this.pedido);
   }
 
   getList() {

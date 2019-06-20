@@ -46,8 +46,8 @@ export class IndexPage implements OnInit {
   slideOpts1 = {
     initialSlide: 0,
     speed: 20,
-    autoplay: true,
-    loop: true,
+    autoplay: false,
+    loop: false,
     slidesPerView: 3,
   }
 
